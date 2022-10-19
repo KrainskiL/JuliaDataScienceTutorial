@@ -15,7 +15,7 @@ Assumptions:
 	- Handling missing values, outliers, high/low cardinality attributes
 	- Data Profiling
 	- DataFrames-based data manipulation (advanced DataFrames)
-- [ ] 3. Exploratory Data Analysis - Łukasz
+- [ ] 3. Exploratory Data Analysis - Mateusz
 	- Descriptive statistics
 	- Data visualisation
 	- Unsupervised learning techniques
@@ -23,11 +23,11 @@ Assumptions:
 	- Classification models 
 	- Regression models
 	- Model evaluation (metrics, confusion matrix, ROC)
-- [ ] 5. Model Tuning - Łukasz
+- [ ] 5. Model Tuning - Mateusz
 	- Handling overfitting 
 	- Hyperparameter tuning (grid, random, bayesian search)
 	- Cross-validation
- - [ ] 6. Explaining The Models - Interpretable AI - Mateusz
+ - [ ] 6. Explaining The Models - Interpretable AI - Łukasz
 	- Inherently explainable models (linear/logistic regression, decision trees, feature importance in Random Forest and Boosted Trees)
 	- Permutation-based feature importance
 	- Shapley values
@@ -35,7 +35,7 @@ Assumptions:
 	- Feature engineering in AutoML
 	- Metric-based model selection
 	- Automated hyperparameter tuning
-- [ ] 8.  Model Deployment and Monitoring - Mateusz
+- [ ] 8.  Model Deployment and Monitoring - Łukasz
 	- Model in a web service
 	- Docker-packed model
 	- Model drift, Champion/Challenger and multi-armed bandits
