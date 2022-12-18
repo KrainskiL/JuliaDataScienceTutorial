@@ -1,7 +1,3 @@
-#Epsilon greedy 3-armed bandit
-using Pkg
-Pkg.activate(".")
-Pkg.instantiate()
 using Flux
 using BSON: @load
 using Genie, Genie.Requests, Genie.Renderer.Json
@@ -11,11 +7,40 @@ columns = ["crim","zn","indus","chas","nox","rm","age","dis","rad","tax","ptrati
 @load "boston_nn_lin.bson" model_lin
 @load "boston_nn_2hl.bson" model_2hl
 
-ϵ = 0.5
-bandits = [("ReLU Neural Network",model), 
-            ("Linear Neural Network",model_lin), 
-            ("Neural Network with Two Hidden Layers",model_2hl)]
-pick_probs = ϵ:ϵ/(length(bandits)-1):1.0
+ϵ = 0.8
+global seed = 1
+bandits = [("ReLU NN", model), 
+            ("Linear NN", model_lin), 
+            ("NN with Two Hidden Layers", model_2hl)]
+pick_probs = ϵ:(1-ϵ)/(length(bandits)-1):1.0
+
+route("/") do
+"""<div style="white-space:pre">To receive a prediction send POST request with JSON payload.
+
+Example:
+>> curl -X POST -d @house.json -H "Content-Type: application/json" http://localhost:8000/
+>> cat house.json
+{
+    "crim": 0.00632,
+    "tax": 296.0,
+    "chas": 0.0,
+    "black": 396.9,
+    "lstat": 4.98,
+    "age": 65.2,
+    "indus": 2.31,
+    "rm": 6.575,
+    "dis": 4.09,
+    "zn": 18.0,
+    "nox": 0.538,
+    "ptratio": 15.3,
+    "rad": 1.0
+}</div>"""
+end
+
+route("/reset") do
+    global seed = 1
+    "Resetting the RNG seed."
+end
 
 route("/", method = POST) do
     input_data = jsonpayload()
@@ -28,8 +53,8 @@ route("/", method = POST) do
             "The prediction can not be returned.")
     else     
         try
-            (bandit_name, bandit) = bandits[argmin(pick_probs .<= rand())]
-            print(bandit_name)
+            (bandit_name, bandit) = bandits[argmin(pick_probs .<= rand(Xoshiro(seed)))]
+            global seed += 1
             Json.json(Dict("input" => input_data,
                         "prediction" => bandit([input_data[f] for f in columns])[1],
                         "model" => bandit_name)
