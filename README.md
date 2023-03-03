@@ -4,11 +4,11 @@ The repository consists of eight classes covering the successive steps of Data S
 
 The topics covered are as follows:
 1. Data Retrieval and Manipulation
-2. Data Cleaning and Preprocessing
-3. Exploratory Data Analysis
-4. Building and Assessing ML Models
-5. Model Tuning
-6. Explaining The Models - Interpretable AI
+2. Programming Exercises in Simulation, ML and Statistics
+3. Unsupervised Machine Learning
+4. Evaluation of Classification Models
+5. Evaluation and Analysis of OLS Regression Model
+6. Explaining The ML Models - Interpretable AI
 7. AutoML
 8. Model Deployment and Monitoring
 
@@ -17,7 +17,7 @@ If you'd like to test your Julia and Data Science skills in practice, you may be
 ## Usage instructions
 
 Make sure you have the [Julia](https://julialang.org/downloads/) installed.
-The course was prepared under Julia 1.8.2.
+The course was prepared under Julia 1.8.5.
 
 1. Clone the repository to a local folder on your computer:
 ```shell
