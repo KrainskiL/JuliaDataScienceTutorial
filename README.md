@@ -17,7 +17,7 @@ If you'd like to test your Julia and Data Science skills in practice, you may be
 ## Usage instructions
 
 Make sure you have the [Julia](https://julialang.org/downloads/) installed.
-The course was prepared under Julia 1.8.5.
+The course was prepared under Julia 1.9.2.
 
 1. Clone the repository to a local folder on your computer:
 ```shell
